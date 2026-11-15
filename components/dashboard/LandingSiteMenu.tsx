@@ -2,7 +2,15 @@
 import landing_regions from "@/data/A3_9regions.json";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const landingSitesA3 = landing_regions.features.map((feature) => ({
   regionCode: feature.properties.RegionCode,
@@ -26,7 +34,7 @@ export default function LandingSiteMenu() {
   // FIX: Accept string | null
   function handleChange(region: string | null) {
     // FIX: Guard clause to prevent errors if it's null
-    if (!region) return; 
+    if (!region) return;
 
     const params = new URLSearchParams(searchParams.toString());
     params.set("region", region);
@@ -52,7 +60,12 @@ export default function LandingSiteMenu() {
         <SelectTrigger className="w-48">
           <SelectValue placeholder="Select a Landing Site" />
         </SelectTrigger>
-        <SelectContent align="end">
+        <SelectContent
+          alignItemWithTrigger={false}
+          align="end"
+          side="bottom"
+          sideOffset={4}
+        >
           <SelectGroup>
             <SelectLabel>Landing Sites</SelectLabel>
             {landingSitesA3.map((item) => (
