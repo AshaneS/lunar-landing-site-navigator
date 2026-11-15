@@ -2,9 +2,11 @@ import { fromUrl } from "geotiff";
 
 let tiffImageCache: any = null;
 
-export async function loadDemImage(url: string = "https://pub-5572cd1a1d75489bb6598a8c85966ce0.r2.dev") {
+export async function loadDemImage(
+  url: string = "https://pub-5572cd1a1d75489bb6598a8c85966ce0.r2.dev/data/your-file.tif",
+) {
   if (tiffImageCache) return tiffImageCache;
-  
+
   try {
     const tiff = await fromUrl(url);
     tiffImageCache = await tiff.getImage();
@@ -15,7 +17,10 @@ export async function loadDemImage(url: string = "https://pub-5572cd1a1d75489bb6
   }
 }
 
-export async function getElevationAtPoint(x: number, y: number): Promise<number | null> {
+export async function getElevationAtPoint(
+  x: number,
+  y: number,
+): Promise<number | null> {
   const image = await loadDemImage();
   if (!image) return null;
 
@@ -39,6 +44,6 @@ export async function getElevationAtPoint(x: number, y: number): Promise<number 
   } catch (err) {
     console.error("Error reading elevation pixel:", err);
   }
-  
+
   return null;
 }
