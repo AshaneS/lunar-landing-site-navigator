@@ -3,7 +3,7 @@ import { fromUrl } from "geotiff";
 let tiffImageCache: any = null;
 
 export async function loadDemImage(
-  url: string = "https://pub-5572cd1a1d75489bb6598a8c85966ce0.r2.dev/data/your-file.tif",
+  url: string = "https://pub-5572cd1a1d75489bb6598a8c85966ce0.r2.dev/data/LDEM_80S_80MPP_ADJ.tiff",
 ) {
   if (tiffImageCache) return tiffImageCache;
 
