@@ -17,24 +17,23 @@ function getCentroid(coords: number[][]) {
   return { lon: sumLon / points.length, lat: sumLat / points.length };
 }
 
-// console.log(landingSitesA3);
-
 export default function LandingSiteMenu() {
-  // Read from URL, but default to "Malapert Massif"
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathName = usePathname();
   const currentRegion = searchParams.get("region") || "Malapert Massif";
 
-  function handleChange(region: string) {
+  // FIX: Accept string | null
+  function handleChange(region: string | null) {
+    // FIX: Guard clause to prevent errors if it's null
+    if (!region) return; 
+
     const params = new URLSearchParams(searchParams.toString());
     params.set("region", region);
 
     const site = landing_regions.features.find(
       (f) => f.properties.Region === region,
     );
-
-    console.log("site is", site);
 
     // Calculate the center and add it to the URL
     if (site) {

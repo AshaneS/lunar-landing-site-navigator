@@ -144,7 +144,7 @@ export function LocalHorizonProfile({
                   fill="#eab308" // Tailwind yellow-500
                   stroke="#ffffff" // White border makes it pop
                   strokeWidth={2}
-                  isFront={true}
+                  // isFront={true}
                   label={{
                     value: "Sun",
                     position: "top",
