@@ -58,7 +58,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {/* 2. Simple Header instead of Version Switcher */}
       <SidebarHeader className="flex items-center py-4 border-b border-sidebar-border">
         <Link href={`/`} className="text-xl font-bold tracking-tight">
-          Lunar Dashboard
+          Lunar Navigator
         </Link>
       </SidebarHeader>
 

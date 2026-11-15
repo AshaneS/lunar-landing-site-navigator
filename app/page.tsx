@@ -101,7 +101,7 @@ export async function DashboardContent({
 
   return (
     <div className="flex flex-col items-center w-full justify-between gap-8 min-h-screen mx-auto max-w-[1600px] px-4 py-4">
-      <div className="flex py-4 px-4 w-full">
+      <div className="sticky top-0 z-50 flex bg-background py-4 px-4 w-full">
         <Panel />
       </div>
       {/* content */}
