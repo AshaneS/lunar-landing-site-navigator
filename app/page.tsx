@@ -7,7 +7,20 @@ import { Suspense } from "react";
 import { connection } from "next/server";
 import Panel from "@/components/dashboard/Panel";
 
-export async function DashboardContent({ searchParams }) {
+type SearchParams = Promise<{
+  lat?: string;
+  lon?: string;
+  alt?: string;
+  date?: string;
+  time?: string;
+  region?: string;
+}>;
+
+export async function DashboardContent({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
   const resolvedParams = await searchParams;
 
   // Check if we have custom coordinates in the URL
@@ -101,7 +114,7 @@ export async function DashboardContent({ searchParams }) {
   );
 }
 
-export default function Home({ searchParams }) {
+export default function Home({ searchParams }: { searchParams: SearchParams }) {
   return (
     <Suspense fallback={<div className="p-8">Loading mission data</div>}>
       <DashboardContent searchParams={searchParams} />
